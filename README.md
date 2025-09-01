@@ -38,7 +38,39 @@ realtime-chat-golang-redis/
 ├── static/ # Frontend UI (HTML/JS)  
 ├── go.mod  
 ├── go.sum  
-├── README.md  
+├── README.md
+
+
+## 📌 Project Architecture Overview
+
+```mermaid
+graph TD
+    A[main.go<br>App 入口點] --> B[handler.go<br>HTTP/WebSocket Router]
+    B --> C{判斷請求<br>HTTP or WS}
+    C -->|HTTP| D[回傳簡單 JSON 或頁面]
+    C -->|WebSocket| E[建立 WS Conn<br>升級為 Client]
+    E --> F[Client Struct<br>包含 conn / send chan]
+    F --> G[註冊 Client 到<br>指定 Room]
+    G --> H[Room Struct<br>管理 Client 列表 + 廣播 chan]
+    H --> I[Hub Struct<br>管理所有 Room Map<br>+ Mutex 控制]
+    H --> F1[廣播訊息給所有 Client]
+    F1 --> F
+
+    subgraph 外部通訊流程
+        J[前端網頁 client.html<br>與 WebSocket 相連]
+        J -->|連線請求| B
+        F -->|傳入訊息| H
+        H -->|廣播訊息| F1
+        F1 -->|回送訊息| J
+    end
+
+    subgraph internal package
+        F
+        G
+        H
+        I
+    end
+```
 
 
 ## 🔧 Getting Started
