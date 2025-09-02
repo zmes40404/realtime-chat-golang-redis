@@ -94,6 +94,14 @@ go run ./cmd/main.go
 | ----- | ---- | ------ |
 | Phase 1 | Basic chatroom with WebSocket&multi-room | ✅In progress |
 | Phase 2 | Add Redis Pub/Sub, vote, photo upload, admin roles | 🔜Coming soon |
+| Phase 3 | Refactor and Code Optimization | 🚩 Future work
+
+
+## ⌚ Future Work
+| Item | Description | Status |
+| ---- | ----------- | ------ |
+|  1.  | Pull all the const setting to .env or config.yaml files | 🔜Coming soon |
+
 
 
 ## 🙋 Author
