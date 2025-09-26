@@ -6,10 +6,10 @@ import (
 
 )
 
-func SetupRouter() *gin.Engine {	
-	router := gin.Default()		// The default HTTP router instance includes log/recovery, which can be used to quickly enable the server.
+func SetupRouter() *gin.Engine {	// *gin.Engine Returns a Gin HTTP server instance (you can call .Run() to start the server).
+	router := gin.Default()		// The default HTTP router instance includes log/recovery, which can be used to quickly enable the server. And this line is equals to "router := gin.New(), router.Use(gin.Logger()), router.Use(gin.Recovery())"
 
-	router.GET("/", func(c *gin.Context) {
+	router.GET("/", func(c *gin.Context) {	// c is *gin.Context, which represents the context of this HTTP request. You can read parameters, write responses, set cookies, etc. from it.
 		c.String(http.StatusOK, "Welcome to the Chatrtoom!!")	// health check endpoint
 	})
 

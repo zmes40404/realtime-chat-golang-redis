@@ -1,7 +1,7 @@
 package main
 // "package main" is a special reserved name of Go	
 // main.go is execution entry point of the entire project
-// Only package main can compile into an executable file (binary)
+// **Only package main can compile into an executable file (binary)**
 
 import (
 	"chatroom-project/internal/server"

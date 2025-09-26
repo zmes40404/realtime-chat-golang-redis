@@ -3,7 +3,7 @@
  import(
 	"sync"
  )
- // Manage all rooms and client connections (central controller)
+ // Manage all rooms and client connections (central controller) -> Multi-person room support architecture
 
 
 // Hub manage all the chat rooms
